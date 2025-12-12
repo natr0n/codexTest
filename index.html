@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sacrament Meeting Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">SM</div>
+      <div>
+        <p class="eyebrow">Tools</p>
+        <h1>Sacrament Meeting Planner</h1>
+      </div>
+    </div>
+    <button class="ghost" id="printAgenda" type="button">Export PDF</button>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <h2>Planner</h2>
+      <form id="plannerForm" class="form-grid" autocomplete="off">
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" id="date" name="date" />
+        </div>
+        <div class="form-group">
+          <label for="conductor">Conducting</label>
+          <input type="text" id="conductor" name="conductor" placeholder="e.g. Bishop Smith" />
+        </div>
+        <div class="form-group">
+          <label for="presiding">Presiding</label>
+          <input type="text" id="presiding" name="presiding" placeholder="e.g. Stake President Jones" />
+        </div>
+        <div class="form-group">
+          <label for="openingHymn">Opening Hymn</label>
+          <input type="text" id="openingHymn" name="openingHymn" placeholder="e.g. #2 The Spirit of God" />
+        </div>
+        <div class="form-group">
+          <label for="intermediateHymn">Intermediate Hymn</label>
+          <input type="text" id="intermediateHymn" name="intermediateHymn" placeholder="Optional" />
+        </div>
+        <div class="form-group">
+          <label for="closingHymn">Closing Hymn</label>
+          <input type="text" id="closingHymn" name="closingHymn" placeholder="e.g. #152 God Be with You" />
+        </div>
+        <div class="form-group">
+          <label for="invocation">Invocation</label>
+          <input type="text" id="invocation" name="invocation" placeholder="Who will pray" />
+        </div>
+        <div class="form-group">
+          <label for="benediction">Benediction</label>
+          <input type="text" id="benediction" name="benediction" placeholder="Who will pray" />
+        </div>
+      </form>
+
+      <div class="list-section">
+        <div class="list-header">
+          <div>
+            <p class="eyebrow">Announcements</p>
+            <h3>Share news or reminders</h3>
+          </div>
+          <div class="input-inline">
+            <input type="text" id="announcementInput" placeholder="Add announcement" />
+            <button id="addAnnouncement" type="button">Add</button>
+          </div>
+        </div>
+        <ul id="announcements" class="chip-list" aria-live="polite"></ul>
+      </div>
+
+      <div class="list-section">
+        <div class="list-header">
+          <div>
+            <p class="eyebrow">Speakers</p>
+            <h3>Who will share messages</h3>
+          </div>
+          <div class="input-inline">
+            <input type="text" id="speakerInput" placeholder="Add speaker" />
+            <button id="addSpeaker" type="button">Add</button>
+          </div>
+        </div>
+        <ul id="speakers" class="chip-list" aria-live="polite"></ul>
+      </div>
+    </section>
+
+    <section class="panel preview" id="agendaCard">
+      <div class="preview-header">
+        <div>
+          <p class="eyebrow">Agenda Preview</p>
+          <h2>Sacrament Meeting</h2>
+          <p class="muted" id="previewDate">Date TBD</p>
+        </div>
+      </div>
+      <div class="preview-body">
+        <dl class="definition">
+          <div>
+            <dt>Presiding</dt>
+            <dd id="previewPresiding">Not set</dd>
+          </div>
+          <div>
+            <dt>Conducting</dt>
+            <dd id="previewConductor">Not set</dd>
+          </div>
+        </dl>
+
+        <div class="section">
+          <p class="eyebrow">Announcements</p>
+          <ul id="previewAnnouncements" class="pill-list empty">No announcements added.</ul>
+        </div>
+
+        <div class="section">
+          <p class="eyebrow">Order of Service</p>
+          <ol class="agenda-list" id="previewAgenda">
+            <li><span class="label">Opening Hymn</span><span id="previewOpeningHymn">Not set</span></li>
+            <li><span class="label">Invocation</span><span id="previewInvocation">Not set</span></li>
+            <li class="speakers-row">
+              <div>
+                <span class="label">Speakers</span>
+                <ul id="previewSpeakers" class="pill-list empty">No speakers added.</ul>
+              </div>
+            </li>
+            <li><span class="label">Sacrament</span><span>Administered by the Priesthood</span></li>
+            <li><span class="label">Intermediate Hymn</span><span id="previewIntermediateHymn">Optional</span></li>
+            <li><span class="label">Closing Hymn</span><span id="previewClosingHymn">Not set</span></li>
+            <li><span class="label">Benediction</span><span id="previewBenediction">Not set</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
